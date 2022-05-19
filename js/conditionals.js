@@ -31,3 +31,44 @@ if ( 2 === 2 ){
 }
 
 
+//operador ternario
+//expresion ? true : false;
+
+console.log('Es par impar');
+let numero = 2;
+
+if( numero % 2 == 0){
+    console.log('Es par');
+} else {
+    console.log('Es impar');
+}
+
+console.log('Con ternario');
+
+let ternario = numero % 2 == 0 
+? 'es par' 
+: 
+'es impar';
+
+console.log(ternario);
+
+//SWITCH
+
+let age = parseInt(prompt('Ingresa tu edad'));
+switch(age) {
+    case 17:
+        console.log('Es menor de edad');
+        break;
+    case 18:
+        console.log('Es mayor de edad');
+        break;    
+    default:
+        console.log('No es una edad valida');
+        break;
+}
+
+
+
+
+
+
