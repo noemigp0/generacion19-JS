@@ -1,1 +1,1 @@
-console.log('Test brnach class2');
+console.log('Test branch class2');

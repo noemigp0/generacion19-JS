@@ -6,8 +6,10 @@ console.log(typeof(celciusToInt));
 //Celsius a farenheit
 //Celsius * 9/5 + 32
 
-let farenheit = celciusToInt * 9/5 + 32;
-
-console.log(`Los grados farenheit son ${farenheit}`);
-
-
+if (celsius === null) {
+     console.log('Ingrese un valor');
+ } else {
+    let farenheit = celciusToInt * 9/5 + 32;
+    console.log(`Los grados farenheit son ${farenheit}`);
+    window.alert(`Los grados farenheit son ${farenheit}`);
+ }
