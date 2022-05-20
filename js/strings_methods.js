@@ -16,7 +16,7 @@ let palabra = prompt('Ingresa una palabra y te dire cuantas vocales tiene');
 if (palabra === null) {
     console.log('Debes ingresar un palabra');
 } else {
-    let numeroVocales = palabra.match(/[aeiou]/g).length + " vocales";
+    let numeroVocales = palabra.match(/[aeiou]/).length + " vocales";
     alert(`La palabra ${palabra} tiene ${numeroVocales} vocales`);
   
 }
