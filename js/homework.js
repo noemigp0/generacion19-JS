@@ -11,7 +11,7 @@
  let entrada = '' ;
  entrada = parseInt(prompt('Ingresa el numero de la tabla que deseas utilizar'));
 
-if( entrada !== null){
+if( entrada !== null && entrada >= 1 && entrada <= 10){ //poner validacion entre 1 y 10
 
     console.log(entrada);
     console.log(typeof(entrada));
@@ -39,6 +39,9 @@ entrada = prompt('Ingresa una oracion');
 let size = entrada.length -1 ;
 let auxVocales = '', auxConsonantes = '';
 
+
+//otra opcion es reemplazar las vocales al final solo para no hacer un else en el if
+//se puede utilizar includes para buscar las coincidencias de lo de la i
 for ( i = 0; i <= size ; i++ ){
     
     if( !(entrada[i] === 'a' || entrada[i] == 'e' || entrada[i] == 'i' || entrada[i] == 'o' || entrada[i] == 'u')){
@@ -63,11 +66,11 @@ console.log(`Consonantes ${auxConsonantes.replace(/[" "]/gi, '').toLocaleLowerCa
  */
 
 entrada = parseInt(prompt('Ingresa un numero entre el 10 y 100'));
-
-if ( entrada >=10 && entrada <= 100){
+//no olvidar espacios entre las condicionales
+if ( entrada >=10 && entrada <= 100 ){
    
-    for ( i = 1; i <= entrada; i++){
-        if( i % 2 == 0){
+    for ( i = 1; i <= entrada; i++ ){
+        if( i % 2 == 0 ){
             console.log(i);
         }
     }
@@ -75,6 +78,9 @@ if ( entrada >=10 && entrada <= 100){
 } else {
     alert('El numero debe estar entre 10 y 100');
 }
+
+
+
 /**
  * 
  * Ejercicio 5. Opcional
@@ -84,3 +90,18 @@ if ( entrada >=10 && entrada <= 100){
  *
  */
 
+//El for debe decrementar en lugar de incrementar al final
+//en este caso el iterador debe iniciar con la longitud de lo que queremos recorrer
+//el delimitador va a ser i>= 0
+//A partir de ahi decrementa
+
+entrada = parseInt(prompt('Escribe una palabra'));
+
+let stringReversed = '';
+
+for (let i = finCadena; i >= 0; i--){
+    stringReversed  += entrada[i];
+    console.log(stringReversed);//asi se imprime en forma de arbol
+
+}
+//nameuser.split('').reverse().join('') //hace ek reverse en una sola linea
