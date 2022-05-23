@@ -105,3 +105,85 @@ for (let i = finCadena; i >= 0; i--){
 
 }
 //nameuser.split('').reverse().join('') //hace ek reverse en una sola linea
+
+
+console.log("hola mundo");
+
+let multiplosSeis = 0;
+let multiplosTres = 0;
+let multiplosSiete = 0;
+
+for (let i = 1; i <= 100; i++) {
+  if (i % 6 === 0) {
+    multiplosSeis += i;
+  }
+  if (i % 3 === 0) {
+    multiplosTres += i;
+  }
+
+  if (i % 7 === 0) {
+    multiplosSiete += i;
+  }
+}
+
+console.log(
+  `Total multiplos de 3: ${multiplosTres} \nTotal multiplos de 6: ${multiplosSeis} \nTotal multiplos de 7: ${multiplosSiete} `
+);
+
+alert(
+  `Respuesta con for, Total sumatoria de los mutiplos de 3,6,7 es: ${
+    multiplosTres + multiplosSeis + multiplosSiete
+  }`
+);
+
+multiplosSeis = 0;
+multiplosTres = 0;
+multiplosSiete = 0;
+let contador = 1;
+
+while (contador <= 100) {
+  if (contador % 6 === 0) {
+    multiplosSeis += contador;
+  }
+  if (contador % 3 === 0) {
+    multiplosTres += contador;
+  }
+
+  if (contador % 7 === 0) {
+    multiplosSiete += contador;
+  }
+  contador++;
+}
+
+alert(
+  `Respuesta con while, Total sumatoria de los mutiplos de 3,6,7 es: ${
+    multiplosTres + multiplosSeis + multiplosSiete
+  }`
+);
+
+multiplosSeis = 0;
+multiplosTres = 0;
+multiplosSiete = 0;
+contador = 1;
+
+do {
+  if (contador % 6 === 0) {
+    multiplosSeis += contador;
+  }
+  if (contador % 3 === 0) {
+    multiplosTres += contador;
+  }
+
+  if (contador % 7 === 0) {
+    multiplosSiete += contador;
+  }
+  contador++;
+} while (contador <= 100);
+
+alert(
+  `Respuesta con do-while, Total sumatoria de los mutiplos de 3,6,7 es: ${
+    multiplosTres + multiplosSeis + multiplosSiete
+  }`
+);
+
+
