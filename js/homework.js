@@ -1,107 +1,177 @@
+// Ejercicios
+
+/**
+ * Ejercicio 1
+ * Escribir un programa de arroje la suma de los multiplos de 3, 5 o 7 que hay entre 1 y 100
+ * Resolver con For, While y do While
+ */
+
+//mult
+
 /**
  * Ejercicio 2
- * Pedir al usuario usuario un numero entre 1 y 10
- * Imprimir la tabla de multiplicar de ese número
- * p.ej. 3
- * 3 x 1 = 3
- * 3 x 2 = 6
- * ....
- * 3 x 10 = 30
+ * Pedir el usuario 1 numero entre 1 y 100
+ * sumar todos los numeros entre el 1 y este numero
+ * Mandar un alert con el  total
+ * Resolver con For, While y do While
+ * p.ej. 5
+ * ->  15
  */
- let entrada = '' ;
- entrada = parseInt(prompt('Ingresa el numero de la tabla que deseas utilizar'));
 
-if( entrada !== null && entrada >= 1 && entrada <= 10){ //poner validacion entre 1 y 10
-
-    console.log(entrada);
-    console.log(typeof(entrada));
-
-    for( i = 1; i<=10; i++ ){
-        console.log(`${entrada} x ${i} = ${entrada * i}`);
-    }
-    
-} else {
-    alert('Debes ingresar un numero');
-}
-
+ let numero = prompt("Ingresa un numero entre 1 y 100");
+ //Que significa Nan cuando se convierte a int desde el promt
+ let auxSuma = 0;
+ if (numero !== null && numero >= 1 && numero <= 100) {
+   for (let i = 0; i <= parseInt(numero); i++) {
+     auxSuma += i;
+   }
+   alert(`Total con for ${auxSuma}`);
+ } else {
+     alert('Ingresa un numero entre 1 y 100');
+     console.error("El numero no puede ser nulo");
+ }
+ auxSuma = 0;
+ if (numero !== null) {
+   let contador = 0;
+   while (contador <= numero) {
+     auxSuma += contador;
+     contador++;
+   }
+   alert(`Total con while ${auxSuma}`);
+ } else {
+   alert('Ingresa un numero entre 1 y 100');
+   console.warn("El numero no puede ser nulo");
+ }
+ auxSuma = 0;
+ if (numero !== null) {
+   let contador = 0;
+   do {
+     auxSuma += contador;
+     contador++;
+   } while (contador <= numero);
+   alert(`Total con dowhile ${auxSuma}`);
+ } else {
+   alert('Ingresa un numero entre 1 y 100');
+   console.warn("El numero no puede ser nulo");
+ }
 
 /**
  * Ejercicio 3
- * Pedir al usuario una oracion
- * Imprimir un string con todas las vocales
- * Imprimir un string con todas las consonantes
- * p.ej. "Hola mundo"
- * Consonantes -> hlmnd
- * Vocales -> oauo
+ * pedir una oracion al usuario
+ * Contar las letras "a" y "e" y espacios,
+ * Resolver con For, While y do While
+ *
+ * p.ej. 'hola kodErs'
+ * ->  A -> 1
+ * ->  E -> 1
+ * ->  Espacios -> 1
  */
-
-entrada = prompt('Ingresa una oracion');
-let size = entrada.length -1 ;
-let auxVocales = '', auxConsonantes = '';
+//No todas las aves pueden volar    a = 4 , e= 3, espacions = 5
+let oracion = prompt('Ingresa una oracion');
 
 
-//otra opcion es reemplazar las vocales al final solo para no hacer un else en el if
-//se puede utilizar includes para buscar las coincidencias de lo de la i
-for ( i = 0; i <= size ; i++ ){
-    
-    if( !(entrada[i] === 'a' || entrada[i] == 'e' || entrada[i] == 'i' || entrada[i] == 'o' || entrada[i] == 'u')){
-        
-        auxConsonantes += entrada[i];
-        //console.log(`Consonantes ${entrada[i]}`);
-    } else {
-        auxVocales += entrada[i];
-        //console.log(`Vocales ${entrada[i]}`);
-    }   
-}
-console.log(`Vocales ${auxVocales.replace(/[" "]/gi, '')}`);
-console.log(`Consonantes ${auxConsonantes.replace(/[" "]/gi, '').toLocaleLowerCase()}`);
+let auxA = 0;
+let auxE = 0;
+let auxEspacios = 0;
 
-/**
- * 
- * Ejercicio 4
- * Pedir el usuario un numero entre 10 y 100
- * Imprimir todos los numeros pares que existen entre 1 y ese numero
- * p.ej. 12 -> 2,4,6,8,10,12
- * 
- */
+if( oracion !== null){
+    let longOracion = oracion.length -1;
+    for( let i=0; i <= longOracion; i++ ){
 
-entrada = parseInt(prompt('Ingresa un numero entre el 10 y 100'));
-//no olvidar espacios entre las condicionales
-if ( entrada >=10 && entrada <= 100 ){
-   
-    for ( i = 1; i <= entrada; i++ ){
-        if( i % 2 == 0 ){
-            console.log(i);
+        switch (oracion.toLocaleLowerCase()[i]) {        
+            case 'a':
+                auxA++;
+                break;
+            case 'e':
+                auxE++;
+                break;
+            case ' ':
+                auxEspacios++;
+            default:
+                break;
         }
     }
     
+    alert(`Resultados con for a -> ${auxA} \n e -> ${auxE} \n espacios -> ${auxEspacios}`);
 } else {
-    alert('El numero debe estar entre 10 y 100');
+    alert('Debes ingresar una oracion');
 }
 
+
+auxA = 0;
+auxE = 0;
+auxEspacios = 0;
+let contador = 0;
+
+if( oracion !== null){
+    let longOracion = oracion.length -1;
+    
+    while( contador <= longOracion ){
+        switch (oracion.toLocaleLowerCase()[contador]) {        
+            case 'a':
+                auxA++;
+                break;
+            case 'e':
+                auxE++;
+                break;
+            case ' ':
+                auxEspacios++;
+            default:
+                break;
+        }
+        contador++;
+    }
+
+    alert(`Resultados con while a -> ${auxA} \n e -> ${auxE} \n espacios -> ${auxEspacios}`);
+    
+    
+} else {
+    alert('Debes ingresar una oracion');
+}
+
+auxA = 0;
+auxE = 0;
+auxEspacios = 0;
+contador = 0;
+
+if( oracion !== null){
+    let longOracion = oracion.length -1;
+    
+    do{
+        switch (oracion.toLocaleLowerCase()[contador]) {        
+            case 'a':
+                auxA++;
+                break;
+            case 'e':
+                auxE++;
+                break;
+            case ' ':
+                auxEspacios++;
+            default:
+                break;
+        }
+        contador++;
+    }while( contador <= longOracion );
+
+    alert(`Resultados con do-while a -> ${auxA} \n e -> ${auxE} \n espacios -> ${auxEspacios}`);
+    
+    
+} else {
+    alert('Debes ingresar una oracion');
+}
 
 
 /**
- * 
- * Ejercicio 5. Opcional
- * Pedir el usuario una palabra
- * Invertir esa palabra e imprimirla en consola
- * p.ej. 'Hola' -> 'aloh'
+ * Ejercicio 4
+ * Estudiar acerca del tema Funciones
+ * ¿Qué son?
+ * Parametros y argumentos de una funcion
+ * Parametros de una funcion
+ * Parametros opcionales
+ * Parametros por defecto (default)
+ *
+ * Referencias
+ * https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Functions
+ * https://www.programiz.com/javascript/function
  *
  */
-
-//El for debe decrementar en lugar de incrementar al final
-//en este caso el iterador debe iniciar con la longitud de lo que queremos recorrer
-//el delimitador va a ser i>= 0
-//A partir de ahi decrementa
-
-entrada = parseInt(prompt('Escribe una palabra'));
-
-let stringReversed = '';
-
-for (let i = finCadena; i >= 0; i--){
-    stringReversed  += entrada[i];
-    console.log(stringReversed);//asi se imprime en forma de arbol
-
-}
-//nameuser.split('').reverse().join('') //hace ek reverse en una sola linea
