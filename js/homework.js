@@ -6,7 +6,82 @@
  * Resolver con For, While y do While
  */
 
-//mult
+ let multiplosSeis = 0;
+ let multiplosTres = 0;
+ let multiplosSiete = 0;
+ 
+ for (let i = 1; i <= 100; i++) {
+   if (i % 6 === 0) {
+     multiplosSeis += i;
+   }
+   if (i % 3 === 0) {
+     multiplosTres += i;
+   }
+ 
+   if (i % 7 === 0) {
+     multiplosSiete += i;
+   }
+ }
+ 
+ console.log(
+   `Total multiplos de 3: ${multiplosTres} \nTotal multiplos de 6: ${multiplosSeis} \nTotal multiplos de 7: ${multiplosSiete} `
+ );
+ 
+ alert(
+   `Respuesta con for, Total sumatoria de los mutiplos de 3,6,7 es: ${
+     multiplosTres + multiplosSeis + multiplosSiete
+   }`
+ );
+ 
+ multiplosSeis = 0;
+ multiplosTres = 0;
+ multiplosSiete = 0;
+ let counter = 1;
+ 
+ while (counter <= 100) {
+   if (counter % 6 === 0) {
+     multiplosSeis += counter;
+   }
+   if (counter % 3 === 0) {
+     multiplosTres += counter;
+   }
+ 
+   if (counter % 7 === 0) {
+     multiplosSiete += counter;
+   }
+   counter++;
+ }
+ 
+ alert(
+   `Respuesta con while, Total sumatoria de los mutiplos de 3,6,7 es: ${
+     multiplosTres + multiplosSeis + multiplosSiete
+   }`
+ );
+ 
+ multiplosSeis = 0;
+ multiplosTres = 0;
+ multiplosSiete = 0;
+ counter = 1;
+ 
+ do {
+   if (counter % 6 === 0) {
+     multiplosSeis += counter;
+   }
+   if (counter % 3 === 0) {
+     multiplosTres += counter;
+   }
+ 
+   if (counter % 7 === 0) {
+     multiplosSiete += counter;
+   }
+   counter++;
+ } while (counter <= 100);
+ 
+ alert(
+   `Respuesta con do-while, Total sumatoria de los mutiplos de 3,6,7 es: ${
+     multiplosTres + multiplosSeis + multiplosSiete
+   }`
+ );
 
 /**
  * Ejercicio 2
