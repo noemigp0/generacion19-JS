@@ -1,118 +1,101 @@
+//agregar que pueda remover los acentos, y a minusculas
+
+// const isPalindrome = ( str ) => {
+//   str
+//    let auxSinEspacios = '';
+//     for (i = 0; i < str.length; i++) {
+//         if (str[i] !== ' '){
+//             auxSinEspacios += str[i];
+//         }
+       
+//       }
+
+//     let auxStrReversed = "";
+//     for (i = auxSinEspacios.length - 1; i >= 0; i--) {
+//       auxStrReversed += auxSinEspacios[i];
+//     }
+    
+//     console.log(auxSinEspacios );
+//     console.log(auxStrReversed );
+//    return auxSinEspacios === auxStrReversed ? true : false;
+
+// }
+
+
+// let palabra = prompt('Ingresa una palabra').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+// console.log(isPalindrome(palabra) ? 'Es palindromo' : 'No es palindromo');
+
+
 
 /**
- * Funcion que pida una palabra al usuario
- * Invierta la palabra
- * y la retorne en un alert
- * reversedString('hola') -> 'aloh' 
+ * Ejercicio 1 *Obligatorio
+ * Realizar una funcion que reciba como parametro 1 array
+ * Y devuelva un array con solo los elementos Pares de ese array
+ * p.ej.
+ * -> evenOnly( [1,2,3,4,18] ) -> [2,4,18]
+ * -> evenOnly( [10, 2, 5] ) -> [10,2]
+ * -> evenOnly() -> 'Se necesita un array'
+ * 
  */
 
-let strUser = prompt("Dame una palabra", "str").toLowerCase();
-
-function reversedStr(strUser) {
-  //sentencias
- 
-  let auxStrReversed = "";
-  for (i = strUser.length - 1; i >= 0; i--) {
-    auxStrReversed += strUser[i];
+const evenOnly = (arreglo = []) => {
+  console.log(arreglo.length);
+  
+  if ( arreglo.length > 0 ){
+  
+  evenOnlyArray = [];
+  for( i = 0; i <= arreglo.length -1; i++ ){
+    if( arreglo[i] % 2 == 0 ){
+      evenOnlyArray.push(arreglo[i]);
+    }  
   }
- return auxStrReversed;
-}
-alert(reversedStr(strUser));
-
-
-
-/**
- * Funcion que pida 3 numeros como parametro
- * 2 numeros obligatorios y 1 opcional con valor de 3
- * Arroje la suma de esos 3 numeros
- * Posibles resultados
- * -> addThreeNumbers(3,4,5) -> 12
- * -> addThreeNumbers(3,4) -> 10
- * -> addThreeNumbers(3) -> 'Faltan datos'
- * -> addThreeNumbers() -> 'Faltan datos'
- */
-
- let numero1 = prompt('Ingresa el valor de numero1');
- let numero2 = prompt('Ingresa el valor de numero2');
- let numero3 = prompt('Ingresa el valor de numero3');
-
-
- if ( numero2 === null || numero3 === null ){
-      alert('Faltan datos');     
-} else {
-
-  alert(sumaNumeros(numero1, numero2, numero3));
-  alert(sumaNumeros(numero1, numero2));
-  numero1 = null;
-  if( numero1 === null){
-    alert('Faltan datos'); 
-  } else {
-    alert(sumaNumeros(numero1));
-    alert(sumaNumeros());
+  return evenOnlyArray;
+ } else {
+  return 'Se necesita un array';
   }  
-}  
- 
- function sumaNumeros(numero1, numero2, numero3 = '3'){   
-   
-     return parseInt(numero1) + parseInt(numero2) + parseInt(numero3);
- }
-
-
-
- 
-
-/**
- * Funcion que pida al usuario los grados Centigrados en su localidad
- * Convertirlos a grados fahrenheit
- * Arrojar un alert con el resultado
- * -> convertTemp(25) -> La temperatura es de 77 ºF
- * -> convertTemp() -> 'Faltan datos'
- */
- let celsius = prompt('Ingrese los grados celcius en tu localidad');
-
-
-
- function gradosAFarenheit(grados){  
-  return `${parseInt(grados) * 9/5 + 32} °F`;
 }
 
-alert(gradosAFarenheit(celsius));
-
-const convertirFarenheit = ()  => {
-  let celsius = prompt('Ingrese los grados celcius en tu localidad');
-  return `${parseInt(celsius) * 9/5 + 32} °F`;
-}
-
-console.log(convertirFarenheit());
-
-/**
- * Funcion que pida al usuario los grados Centigrados en su localidad
- * Convertirlos a grados fahrenheit
- * Arrojar un alert con el resultado
- * -> convertTemp(25) -> La temperatura es de 77 ºF
- * -> convertTemp() -> 'Faltan datos'
- */
+//console.log(evenOnly([10, 2, 5]));
+console.log(evenOnly());
 
 
 
 /**
- * Funcion que imprima las tablas del 1 al 10
+ * Ejercicio 2 *Opcional
+ * Funcion que reciba como parametro una array de strings
+ * y devuelva el primer y ultimo caracter de cada string
+ * p.ej.
+ * -> firstAndLast ( ['hola', 'mundo'] ) -> ['ha', 'mo']
  */
 
-function tablasMultiplicar(){
-  for (let i = 1; i <= 10; i++){
-      for(let k = 1; k <= 10; k++) {
-          console.log(`${i} x ${k} = ${i*k}`);
-      }
-  }
-}
 
-tablasMultiplicar();
-/**
- * Funcion que pida al usuario un numero (N) entre 1 y 100 
- * Mandar un alert con suma de 1 a N
- * Valor por defecto 3
- * addNumberLimit() -> 6
- * addNumberLimit(4) -> 10
- * addNumberLimit(5) -> 15
- */
+
+
+
+//metodos arrays
+
+
+//Siempre añade elementos al inicio del array
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+console.log(fruits);
+ fruits.unshift("Lemon", "Pineapple");
+console.log(fruits);
+// fruits.unshift("Strawberry", "kiwi");
+// console.log(fruits);
+
+
+//Convierte a cadena separando por comas
+fruits.toString();
+console.log(fruits.toString());
+
+
+//
+
+console.log(fruits.sort());//ordena de forma ascendente
+console.log(fruits.reverse());//ordena de forma descendente
+
+
+//array.slice(start, end) //la ultima posicion no es inclusiva
+const citrus = fruits.slice(1, 3);
+console.log(citrus);
