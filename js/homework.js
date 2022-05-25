@@ -1,252 +1,110 @@
-// Ejercicios
 
 /**
- * Ejercicio 1
- * Escribir un programa de arroje la suma de los multiplos de 3, 5 o 7 que hay entre 1 y 100
- * Resolver con For, While y do While
+ * Funcion que pida una palabra al usuario
+ * Invierta la palabra
+ * y la retorne en un alert
+ * reversedString('hola') -> 'aloh' 
  */
 
- let multiplosSeis = 0;
- let multiplosTres = 0;
- let multiplosSiete = 0;
+let strUser = prompt("Dame una palabra", "str").toLowerCase();
+
+function reversedStr(strUser) {
+  //sentencias
  
- for (let i = 1; i <= 100; i++) {
-   if (i % 6 === 0) {
-     multiplosSeis += i;
-   }
-   if (i % 3 === 0) {
-     multiplosTres += i;
-   }
- 
-   if (i % 7 === 0) {
-     multiplosSiete += i;
-   }
- }
- 
- console.log(
-   `Total multiplos de 3: ${multiplosTres} \nTotal multiplos de 6: ${multiplosSeis} \nTotal multiplos de 7: ${multiplosSiete} `
- );
- 
- alert(
-   `Respuesta con for, Total sumatoria de los mutiplos de 3,6,7 es: ${
-     multiplosTres + multiplosSeis + multiplosSiete
-   }`
- );
- 
- multiplosSeis = 0;
- multiplosTres = 0;
- multiplosSiete = 0;
- let counter = 1;
- 
- while (counter <= 100) {
-   if (counter % 6 === 0) {
-     multiplosSeis += counter;
-   }
-   if (counter % 3 === 0) {
-     multiplosTres += counter;
-   }
- 
-   if (counter % 7 === 0) {
-     multiplosSiete += counter;
-   }
-   counter++;
- }
- 
- alert(
-   `Respuesta con while, Total sumatoria de los mutiplos de 3,6,7 es: ${
-     multiplosTres + multiplosSeis + multiplosSiete
-   }`
- );
- 
- multiplosSeis = 0;
- multiplosTres = 0;
- multiplosSiete = 0;
- counter = 1;
- 
- do {
-   if (counter % 6 === 0) {
-     multiplosSeis += counter;
-   }
-   if (counter % 3 === 0) {
-     multiplosTres += counter;
-   }
- 
-   if (counter % 7 === 0) {
-     multiplosSiete += counter;
-   }
-   counter++;
- } while (counter <= 100);
- 
- alert(
-   `Respuesta con do-while, Total sumatoria de los mutiplos de 3,6,7 es: ${
-     multiplosTres + multiplosSeis + multiplosSiete
-   }`
- );
+  let auxStrReversed = "";
+  for (i = strUser.length - 1; i >= 0; i--) {
+    auxStrReversed += strUser[i];
+  }
+ return auxStrReversed;
+}
+alert(reversedStr(strUser));
 
 /**
- * Ejercicio 2
- * Pedir el usuario 1 numero entre 1 y 100
- * sumar todos los numeros entre el 1 y este numero
- * Mandar un alert con el  total
- * Resolver con For, While y do While
- * p.ej. 5
- * ->  15
+ * Funcion que pida 3 numeros como parametro
+ * 2 numeros obligatorios y 1 opcional con valor de 3
+ * Arroje la suma de esos 3 numeros
+ * Posibles resultados
+ * -> addThreeNumbers(3,4,5) -> 12
+ * -> addThreeNumbers(3,4) -> 10
+ * -> addThreeNumbers(3) -> 'Faltan datos'
+ * -> addThreeNumbers() -> 'Faltan datos'
  */
 
- let numero = prompt("Ingresa un numero entre 1 y 100");
- //Que significa Nan cuando se convierte a int desde el promt
- let auxSuma = 0;
- if (numero !== null && numero >= 1 && numero <= 100) {
-   for (let i = 0; i <= parseInt(numero); i++) {
-     auxSuma += i;
-   }
-   alert(`Total con for ${auxSuma}`);
- } else {
-     alert('Ingresa un numero entre 1 y 100');
-     console.error("El numero no puede ser nulo");
- }
- auxSuma = 0;
- if (numero !== null) {
-   let contador = 0;
-   while (contador <= numero) {
-     auxSuma += contador;
-     contador++;
-   }
-   alert(`Total con while ${auxSuma}`);
- } else {
-   alert('Ingresa un numero entre 1 y 100');
-   console.warn("El numero no puede ser nulo");
- }
- auxSuma = 0;
- if (numero !== null) {
-   let contador = 0;
-   do {
-     auxSuma += contador;
-     contador++;
-   } while (contador <= numero);
-   alert(`Total con dowhile ${auxSuma}`);
- } else {
-   alert('Ingresa un numero entre 1 y 100');
-   console.warn("El numero no puede ser nulo");
+ let numero1 = prompt('Ingresa el valor de numero1');
+ let numero2 = prompt('Ingresa el valor de numero2');
+ let numero3 = prompt('Ingresa el valor de numero3');
+
+
+ if ( numero2 === null || numero3 === null ){
+      alert('Faltan datos');     
+} else {
+
+  alert(sumaNumeros(numero1, numero2, numero3));
+  alert(sumaNumeros(numero1, numero2));
+  numero1 = null;
+  if( numero1 === null){
+    alert('Faltan datos'); 
+  } else {
+    alert(sumaNumeros(numero1));
+    alert(sumaNumeros());
+  }
+  
+}   
+ 
+ function sumaNumeros(numero1, numero2, numero3 = '3'){   
+   
+     return parseInt(numero1) + parseInt(numero2) + parseInt(numero3);
  }
 
+
+
+ 
+
 /**
- * Ejercicio 3
- * pedir una oracion al usuario
- * Contar las letras "a" y "e" y espacios,
- * Resolver con For, While y do While
- *
- * p.ej. 'hola kodErs'
- * ->  A -> 1
- * ->  E -> 1
- * ->  Espacios -> 1
+ * Funcion que pida al usuario los grados Centigrados en su localidad
+ * Convertirlos a grados fahrenheit
+ * Arrojar un alert con el resultado
+ * -> convertTemp(25) -> La temperatura es de 77 ºF
+ * -> convertTemp() -> 'Faltan datos'
  */
-//No todas las aves pueden volar    a = 4 , e= 3, espacions = 5
-let oracion = prompt('Ingresa una oracion');
+ let celsius = prompt('Ingrese los grados celcius en tu localidad');
 
 
-let auxA = 0;
-let auxE = 0;
-let auxEspacios = 0;
 
-if( oracion !== null){
-    let longOracion = oracion.length -1;
-    for( let i=0; i <= longOracion; i++ ){
-
-        switch (oracion.toLocaleLowerCase()[i]) {        
-            case 'a':
-                auxA++;
-                break;
-            case 'e':
-                auxE++;
-                break;
-            case ' ':
-                auxEspacios++;
-            default:
-                break;
-        }
-    }
-    
-    alert(`Resultados con for a -> ${auxA} \n e -> ${auxE} \n espacios -> ${auxEspacios}`);
-} else {
-    alert('Debes ingresar una oracion');
+ function gradosAFarenheit(grados){  
+  return `${parseInt(grados) * 9/5 + 32} °F`;
 }
 
+alert(gradosAFarenheit(celsius));
 
-auxA = 0;
-auxE = 0;
-auxEspacios = 0;
-let contador = 0;
+/**
+ * Funcion que pida al usuario los grados Centigrados en su localidad
+ * Convertirlos a grados fahrenheit
+ * Arrojar un alert con el resultado
+ * -> convertTemp(25) -> La temperatura es de 77 ºF
+ * -> convertTemp() -> 'Faltan datos'
+ */
 
-if( oracion !== null){
-    let longOracion = oracion.length -1;
-    
-    while( contador <= longOracion ){
-        switch (oracion.toLocaleLowerCase()[contador]) {        
-            case 'a':
-                auxA++;
-                break;
-            case 'e':
-                auxE++;
-                break;
-            case ' ':
-                auxEspacios++;
-            default:
-                break;
-        }
-        contador++;
-    }
-
-    alert(`Resultados con while a -> ${auxA} \n e -> ${auxE} \n espacios -> ${auxEspacios}`);
-    
-    
-} else {
-    alert('Debes ingresar una oracion');
-}
-
-auxA = 0;
-auxE = 0;
-auxEspacios = 0;
-contador = 0;
-
-if( oracion !== null){
-    let longOracion = oracion.length -1;
-    
-    do{
-        switch (oracion.toLocaleLowerCase()[contador]) {        
-            case 'a':
-                auxA++;
-                break;
-            case 'e':
-                auxE++;
-                break;
-            case ' ':
-                auxEspacios++;
-            default:
-                break;
-        }
-        contador++;
-    }while( contador <= longOracion );
-
-    alert(`Resultados con do-while a -> ${auxA} \n e -> ${auxE} \n espacios -> ${auxEspacios}`);
-    
-    
-} else {
-    alert('Debes ingresar una oracion');
-}
 
 
 /**
- * Ejercicio 4
- * Estudiar acerca del tema Funciones
- * ¿Qué son?
- * Parametros y argumentos de una funcion
- * Parametros de una funcion
- * Parametros opcionales
- * Parametros por defecto (default)
- *
- * Referencias
- * https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Functions
- * https://www.programiz.com/javascript/function
- *
+ * Funcion que imprima las tablas del 1 al 10
+ */
+
+function tablasMultiplicar(){
+  for (let i = 1; i <= 10; i++){
+      for(let k = 1; k <= 10; k++) {
+          console.log(`${i} x ${k} = ${i*k}`);
+      }
+  }
+}
+
+tablasMultiplicar();
+/**
+ * Funcion que pida al usuario un numero (N) entre 1 y 100 
+ * Mandar un alert con suma de 1 a N
+ * Valor por defecto 3
+ * addNumberLimit() -> 6
+ * addNumberLimit(4) -> 10
+ * addNumberLimit(5) -> 15
  */
