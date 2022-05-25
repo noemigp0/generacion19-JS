@@ -19,6 +19,8 @@ function reversedStr(strUser) {
 }
 alert(reversedStr(strUser));
 
+
+
 /**
  * Funcion que pida 3 numeros como parametro
  * 2 numeros obligatorios y 1 opcional con valor de 3
@@ -47,9 +49,8 @@ alert(reversedStr(strUser));
   } else {
     alert(sumaNumeros(numero1));
     alert(sumaNumeros());
-  }
-  
-}   
+  }  
+}  
  
  function sumaNumeros(numero1, numero2, numero3 = '3'){   
    
@@ -76,6 +77,13 @@ alert(reversedStr(strUser));
 }
 
 alert(gradosAFarenheit(celsius));
+
+const convertirFarenheit = ()  => {
+  let celsius = prompt('Ingrese los grados celcius en tu localidad');
+  return `${parseInt(celsius) * 9/5 + 32} °F`;
+}
+
+console.log(convertirFarenheit());
 
 /**
  * Funcion que pida al usuario los grados Centigrados en su localidad
