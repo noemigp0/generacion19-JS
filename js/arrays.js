@@ -20,5 +20,7 @@ for( i = arrayToReverse.length -1; i>=0; i--){
 console.log(arrayReversed);
 
 
-// .push() --> agrega nuevo item al array
+// .push() --> agrega nuevo item al array, siempre lo agrrega al final
 // .pop() --> Elimina nuevo item al array
+
+

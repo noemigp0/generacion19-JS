@@ -39,25 +39,25 @@
  * 
  */
 
-const evenOnly = (arreglo = []) => {
-  console.log(arreglo.length);
+// const evenOnly = (arreglo = []) => {
+//   console.log(arreglo.length);
   
-  if ( arreglo.length > 0 ){
+//   if ( arreglo.length > 0 ){
   
-  evenOnlyArray = [];
-  for( i = 0; i <= arreglo.length -1; i++ ){
-    if( arreglo[i] % 2 == 0 ){
-      evenOnlyArray.push(arreglo[i]);
-    }  
-  }
-  return evenOnlyArray;
- } else {
-  return 'Se necesita un array';
-  }  
-}
+//   evenOnlyArray = [];
+//   for( i = 0; i <= arreglo.length -1; i++ ){
+//     if( arreglo[i] % 2 == 0 ){
+//       evenOnlyArray.push(arreglo[i]);
+//     }  
+//   }
+//   return evenOnlyArray;
+//  } else {
+//   return 'Se necesita un array';
+//   }  
+// }
 
-//console.log(evenOnly([10, 2, 5]));
-console.log(evenOnly());
+// //console.log(evenOnly([10, 2, 5]));
+// console.log(evenOnly());
 
 
 
@@ -70,10 +70,10 @@ console.log(evenOnly());
  */
 
 
+//para este puedo ocupar  slice
 
 
-
-//metodos arrays
+//metodo slice puede servir para este ejercicio
 
 
 //Siempre añade elementos al inicio del array
@@ -81,21 +81,21 @@ const fruits = ["Banana", "Orange", "Apple", "Mango"];
 console.log(fruits);
  fruits.unshift("Lemon", "Pineapple");
 console.log(fruits);
-// fruits.unshift("Strawberry", "kiwi");
-// console.log(fruits);
+ fruits.unshift("Strawberry", "kiwi");
+console.log(fruits);
 
 
-//Convierte a cadena separando por comas
-fruits.toString();
-console.log(fruits.toString());
+// //Convierte a cadena separando por comas
+// fruits.toString();
+// console.log(fruits.toString());
 
 
-//
+// //
 
-console.log(fruits.sort());//ordena de forma ascendente
-console.log(fruits.reverse());//ordena de forma descendente
+// console.log(fruits.sort());//ordena de forma ascendente
+// console.log(fruits.reverse());//ordena de forma descendente
 
 
-//array.slice(start, end) //la ultima posicion no es inclusiva
-const citrus = fruits.slice(1, 3);
-console.log(citrus);
+// //array.slice(start, end) //la ultima posicion no es inclusiva
+// const citrus = fruits.slice(1, 3);
+// console.log(citrus);
