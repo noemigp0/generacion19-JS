@@ -1,101 +1,85 @@
-//agregar que pueda remover los acentos, y a minusculas
-
-// const isPalindrome = ( str ) => {
-//   str
-//    let auxSinEspacios = '';
-//     for (i = 0; i < str.length; i++) {
-//         if (str[i] !== ' '){
-//             auxSinEspacios += str[i];
-//         }
-       
-//       }
-
-//     let auxStrReversed = "";
-//     for (i = auxSinEspacios.length - 1; i >= 0; i--) {
-//       auxStrReversed += auxSinEspacios[i];
-//     }
-    
-//     console.log(auxSinEspacios );
-//     console.log(auxStrReversed );
-//    return auxSinEspacios === auxStrReversed ? true : false;
-
-// }
-
-
-// let palabra = prompt('Ingresa una palabra').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
-// console.log(isPalindrome(palabra) ? 'Es palindromo' : 'No es palindromo');
-
-
-
 /**
- * Ejercicio 1 *Obligatorio
- * Realizar una funcion que reciba como parametro 1 array
- * Y devuelva un array con solo los elementos Pares de ese array
- * p.ej.
- * -> evenOnly( [1,2,3,4,18] ) -> [2,4,18]
- * -> evenOnly( [10, 2, 5] ) -> [10,2]
- * -> evenOnly() -> 'Se necesita un array'
- * 
+ * Tarea
+ * REalizar los siguientes 3 ejercicios
+ *
  */
 
-// const evenOnly = (arreglo = []) => {
-//   console.log(arreglo.length);
-  
-//   if ( arreglo.length > 0 ){
-  
-//   evenOnlyArray = [];
-//   for( i = 0; i <= arreglo.length -1; i++ ){
-//     if( arreglo[i] % 2 == 0 ){
-//       evenOnlyArray.push(arreglo[i]);
-//     }  
-//   }
-//   return evenOnlyArray;
-//  } else {
-//   return 'Se necesita un array';
-//   }  
-// }
-
-// //console.log(evenOnly([10, 2, 5]));
-// console.log(evenOnly());
-
-
-
 /**
- * Ejercicio 2 *Opcional
- * Funcion que reciba como parametro una array de strings
- * y devuelva el primer y ultimo caracter de cada string
- * p.ej.
- * -> firstAndLast ( ['hola', 'mundo'] ) -> ['ha', 'mo']
+ * 1. funcion con .reduce()
+ * capitalizeNames( ['jorge','lUis', 'marcOs', 'mario'] )
+ * -> ['Jorge','Luis', 'Marcos', 'Mario']
  */
 
+let names = ["jorge", "lUis", "marcOs", "mario", "nOeMi"];
 
-//para este puedo ocupar  slice
+const capitalizeNames = (namesArray) =>
+  namesArray.reduce((acc, name) => {
+    acc.push(
+      name.charAt(0).toUpperCase() + name.substring(1).toLocaleLowerCase()
+    );
+    return acc;
+  }, []);
 
+console.log(capitalizeNames(names));
+/**
+ * 2. funcion con .reduce()
+ * Dado un array de numeros, filtras solo los pares
+ * filterEvens( [2,3,4,5] )
+ * -> [2,4]
+ */
 
-//metodo slice puede servir para este ejercicio
+let numbers = [2, 3, 4, 5, 6, 8];
+//si pongo las llaves en la funsion, espera un return, si no se las pongo retorna automatico
+let filterEvens = (numbersArray) =>
+  numbersArray.reduce((acc, number) => {
+    if (number % 2 === 0) {
+      acc.push(number);
+    }
+    return acc;
+  }, []);
 
+console.log(filterEvens(numbers));
 
-//Siempre añade elementos al inicio del array
-const fruits = ["Banana", "Orange", "Apple", "Mango"];
-console.log(fruits);
- fruits.unshift("Lemon", "Pineapple");
-console.log(fruits);
- fruits.unshift("Strawberry", "kiwi");
-console.log(fruits);
+/**
+ * 3. funcion con .reduce()
+ * Dado un array de numeros, obtener la suma de solo los elementos positivos
+ * addAllPositives( [ 1, -4, 12, 0, -3, 29, -150] )
+ * -> 42
+ */
 
+let fullNumbers = [1, -4, 12, 0, -3, 29, -150, -40, 40];
+let addAllPositives = (fullNumbersArray) =>
+  fullNumbersArray.reduce((acc, number) => {
+    if (number > 0) {
+      acc += number;
+    }
+    return acc;
+  }, 0);
 
-// //Convierte a cadena separando por comas
-// fruits.toString();
-// console.log(fruits.toString());
+console.log(addAllPositives(fullNumbers));
 
+/**
+ * 4. Estudiar Objetos y métodos de objetos
+ *
+ */
 
-// //
+/**
+ * Opcional
+ * funcion con .reduce()
+ * Dado un array de palabras, filtras las que son palindromos
+ * onlyPalindrome( ['oso','pedro', 'jorge', 'seres'] )
+ * -> ['oso','seres']
+ */
 
-// console.log(fruits.sort());//ordena de forma ascendente
-// console.log(fruits.reverse());//ordena de forma descendente
+let words = ['oso', 'pedro', 'jorge', 'seres', 'ala'];
+let onlyPalindrome = (wordsArray) =>
+  wordsArray.reduce((acc, word) => {
+    let auxReverseWord = word.split("").reverse().join().replaceAll(",", "");
+    if (word === auxReverseWord) {
+      acc.push(word);
+    }
 
+    return acc;
+  }, []);
 
-// //array.slice(start, end) //la ultima posicion no es inclusiva
-// const citrus = fruits.slice(1, 3);
-// console.log(citrus);
+console.log(onlyPalindrome(words));
