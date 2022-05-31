@@ -7,45 +7,24 @@
  * .split()
  */
 
-let fullEmail = 'jalcc170@gmail.com';
+//incomplete
 
-const maskEmail = ( fullEmail ) => {
-    fullEmail.split('@').map((email, index) => {
-       let aux = '';
-       if( index === 0 ) {
-        email.replaceAll(/[A-Za-z0-9]/gi, '*') 
-       } 
-       aux
-        return email
+// let fullEmail = 'jalcc170@gmail.com';
 
-    })
+// const maskEmail = ( fullEmail ) => {
+//     fullEmail.split('@').map((email, index) => {
+//        let aux = '';
+//        if( index === 0 ) {
+//         email.replaceAll(/[A-Za-z0-9]/gi, '*')
+//        }
+//        aux
+//         return email
 
-    
-}
+//     })
 
-console.log(maskEmail(fullEmail));
+// }
 
-//    return email.split('@').forEach((element, index) => {
-       
-//         if ( index === 0 ) {
-//             console.log(element.replaceAll(/[A-Za-z0-9]/gi, '*'))
-//             }
-//            //console.log( element.match(/[A-Za-z0-9]/gi).ma)
-//         }
-//         // console.log(element, index)
-// )
-//     }
-
-
-
-
-//replaceAll('','*');
-
-console.log(maskEmail(fullEmail));
-
-
-
-
+// console.log(maskEmail(fullEmail));
 
 /**
  * Escribir una funcion, Que dado un string, 
@@ -63,6 +42,37 @@ console.log(maskEmail(fullEmail));
  * 
  */
 
+let word = "bake"; //false
+//let word = 'cat'; //true
+//let word = 'ear';
+//let word = 'bake';
+//let word = 'dog';
+
+//incomplete
+// const isVowelSandwich = (wordParam) => {
+//   console.log(wordParam.slice(0, 1));
+//   console.log(wordParam.slice(-1, wordParam.length));
+//   //
+
+//   if (
+//     wordParam.slice(0, 1) !== "a" &&
+//     "e" &&
+//     "i" &&
+//     "o" &&
+//     "u" &&
+//     wordParam.slice(-1, wordParam.length) !== "a" &&
+//     "e" &&
+//     "i" &&
+//     "o" &&
+//     "u"
+//   ) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// };
+
+// console.log(isVowelSandwich(word));
 
 /**
  * Escribir una funcion, Que dado un string, 
@@ -79,6 +89,44 @@ console.log(maskEmail(fullEmail));
  * 
  */
 
+let stringToEvaluate = 'JAVAscript';// ➞ true
+stringToEvaluate = '12321313'; //➞ false
+stringToEvaluate = "i have spaces"; //➞ true
+stringToEvaluate = 'i have spaces!!!';//➞ false
+
+//\w	Un carácter alfanumérico (carácter de texto o (“word character”)
+//\d	Cualquier carácter de dígito
+//\W	Un carácter no alfanumérico
+//\S	Un carácter no-espacio-en-blanco
+//\s	Cualquier espacio en blanco (espacio, pestaña, nueva línea y similar)
+
+const lettersOnly = (string) => {
+  // console.log(string.match(/[\w\s]/gi) );
+  // console.log(string.match(/[\W]/gi));
+  // console.log(string.replaceAll(' ','').match(/[\W]/gi) );
+
+  if (string.replaceAll(" ", "").match(/[\W\d]/gi)) {
+    return false;
+  }
+  return true;
+};
+
+console.log(lettersOnly(stringToEvaluate));
+
+const lettersOnlyTest = (string) => {
+  let pattern = /[\W\d]/gi;
+
+  //console.log(pattern.test(string) );
+
+  if (pattern.test(string.replaceAll(' ', ''))) {
+    return false;
+  }
+  return true;
+};
+
+console.log(lettersOnlyTest(stringToEvaluate));
+
+
 /**
  * Escribir una funcion que convierta un string en formato camel case
  * p.ej
@@ -88,110 +136,13 @@ console.log(maskEmail(fullEmail));
  * .join()
  */
 
-/**
- * Escribir una funcion que convierta de formato camel case a formato normal
- * p.ej
- * -> uncamelize("helloWorld") -> "hello world"
- * 
- * Implementar soluciones con:
- * .forEach()
- */
+let string = "javaScript exercises something else";
+const camelize = ( sentence ) => {
+    let auxString = [];
+     sentence.split(' ').forEach(element => {       
+        auxString.push(element.slice(0,1).toUpperCase() + element.slice(1))
+     })
+     return auxString.join().replaceAll(',','' );
+}
 
-
-/**
- * Escribir una funcion que replique un string N veces
- * p.ej
- * -> repeat('Ha!') -> "Ha!"
- * -> repeat('Ha!', 2) -> "Ha!Ha!"
- * -> repeat('Ha!', 3) -> "Ha!Ha!Ha!"
- *
- * Implementar soluciones con:
- * .repeat()
- * .forEach()
- */
-
-
-/**
- * Escribir una funcion que cuente las veces que aparece 
- * una palabra en una oración
- * p.ej
- * -> countWord('Hola mundo', 'mundo') -> 1
- * -> countWord('The quick brown fox jumps over the lazy dog', 'the') -> 2
- *
- * Implementar soluciones con:
- * .repeat()
- * .forEach()
- */
-
-
-/**
- * Generar una funcion 
- * que a partir de un string devuelva solo las iniciales de ese string
- * getInitialLetters('Hola koders')
- * -> 'Hk'
- * 
- * Implementar soluciones con:
- * .forEach()
- * .map()
- * .reduce()
- * for()
- * 
- */
-
-
-/**
- * Escribir una funcion, Que dado una oracion, 
- * convierta cada 2 palabras en mayusculas o minusculass
- * p.ej
- * swapCase('hola mundo, hola koders')
- * -> 'hola MUNDO, hola KODERS'
- * 
- * Implementar soluciones con:
- * .map()
- * .reduc()
- * .forEach()
- * for()
- */
-
-
-
-/**
- * Escribir una funcion, Que dado una array de numeros, 
- * Encuentre el numero mas pequeño
- * getSmallNumber( [1,5, 7] )
- * -> 1
- * 
- * Implementar soluciones con
- * for()
- * .forEach()
- * .reduce()
- */
-
-
-
-/**
- * Escribir una funcion, Que dado una array de  10 numeros entre 0 y 9, 
- * retorne un string en formato telefonico
- * formatPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
- * -> "(123) 456-7890"
- * 
- * Implementar soluciones con
- * for()
- * .forEach()
- * .reduce()
- */
-
-
-
-/**
- * Escribir una funcion, Que dado una array de numeros y strings, 
- * retorne un array con solo los que son de tipo string
- * filterArray([1, 2, "a", "b"]) 
- * -> ["a", "b"]
- * 
- * Implementar soluciones con
- * for()
- * .forEach()
- * .filter()
- * .reduce()
- */
+console.log(camelize(string));
