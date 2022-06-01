@@ -7,24 +7,15 @@
  * .split()
  */
 
-//incomplete
-
-// let fullEmail = 'jalcc170@gmail.com';
-
-// const maskEmail = ( fullEmail ) => {
-//     fullEmail.split('@').map((email, index) => {
-//        let aux = '';
-//        if( index === 0 ) {
-//         email.replaceAll(/[A-Za-z0-9]/gi, '*')
-//        }
-//        aux
-//         return email
-
-//     })
-
-// }
-
-// console.log(maskEmail(fullEmail));
+let fullEmail = "noemigp0@outlook.es";
+const maskEmail = (fullEmail) => {
+  let joinEmail = "";
+  joinEmail = fullEmail.split("@").map((element, index) => {
+    return index === 0 ? element.replaceAll(/[A-Za-z0-9]/gi, "*") : element;
+  });
+  return joinEmail.toString().replaceAll(",", "@");
+};
+console.log(maskEmail(fullEmail));
 
 /**
  * Escribir una funcion, Que dado un string, 
