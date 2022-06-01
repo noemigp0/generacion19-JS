@@ -201,3 +201,25 @@ const isAnObjectOrArray = (element) => {
 };
 
 console.log(isAnObjectOrArray(parametro));
+
+//CRUD
+//C -> create
+let objectCar = {
+    model: 'jetta',
+    doors: 4,
+    year: 2022,
+    cilindraje: 2,
+    color: 'rojo'
+}
+
+
+
+//R -> read
+console.log(objectCar);
+//U -> Update
+objectCar.color = 'verde'
+//D -> Delete
+delete objectCar.cilindraje
+console.log(objectCar);
+
+
