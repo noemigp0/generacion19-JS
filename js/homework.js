@@ -81,3 +81,58 @@ console.log(newObject);
 * https://www.digitalocean.com/community/tutorials/how-to-use-object-methods-in-javascript
 * https://www.programiz.com/javascript/library/object/assign
 * */
+
+
+
+// Declarando un objeto
+const employees = {
+  boss: "Michael",
+  secretary: "Pam",
+  sales: "Jim",
+  accountant: "Oscar",
+};
+
+// Obtiene las llaves (keys) de un objeto y los transforma a un arreglo
+const keys = Object.keys(employees);
+// Obtiene los valores de un objeto y los transforma a un arreglo
+const values = Object.values(employees);
+
+//console.log(keys);
+//console.log(values);
+
+// Teniendo las llaves en forma de arreglo es posible acceder a la propiedades con un foreach
+Object.keys(employees).forEach((key) => {
+  let value = employees[key];
+
+  //console.log(`${key}: ${value}`);
+});
+
+// Declarando objeto
+const user = {
+  username: "AzureDiamond",
+  password: "hunter2",
+};
+
+
+// Bloqueando el objeto para prevenir adiciones y modificaciones, 
+//esta copiando el objeto pero sin permitir nuevas modificaciones
+const newUser = Object.freeze(user);
+
+newUser.password = "*******";
+newUser.active = true;
+
+//console.log(newUser);
+
+
+
+// Declarando objeto
+const operatingSystem = {
+    name: 'Ubuntu',
+    version: 18.04,
+    license: 'Open Source'
+};
+
+// Obtiene un arreglo de arreglo con la llave y el valor
+const entries = Object.entries(operatingSystem);
+
+//console.log(entries);
