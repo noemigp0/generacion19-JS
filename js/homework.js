@@ -38,6 +38,17 @@ const getInfoCoder = (objKoder) => {
   return info
 }
 console.log(getInfoCoder(koders));
+
+const printName = (arrObj) => {//revisar ejemplos de find
+  let info = ''
+  arrObj.find(object => {
+    info += `${object.name} tiene ${object.age} y es de la generacion ${object.generation} \n`;
+    console.log(object.modulos[1]);//para acceder a una propiedad de un objeto con valor tipo arreglo
+  })
+  return info
+}
+
+console.log(printName(koders));
 /**
  * Del mismo array de koders
  * Obtener la suma de todas las edades
@@ -45,7 +56,7 @@ console.log(getInfoCoder(koders));
  */
 const getAgeSum = (objKoder) => { 
   let sumaEdades = 0;
-  koders.forEach((cv) => {
+  objKoder.forEach((cv) => {
     sumaEdades += cv.age;
   });
   return sumaEdades
@@ -92,7 +103,7 @@ const getLibraryInfo = (objLibrary) => {
   Lista de todos los Libros  ${listaLibros}`;
  }
 console.log(getLibraryInfo(library));
-Collapse
+
 
 
 
