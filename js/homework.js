@@ -38,6 +38,17 @@ const getInfoCoder = (objKoder) => {
   return info
 }
 console.log(getInfoCoder(koders));
+
+const printName = (arrObj) => {//revisar ejemplos de find
+  let info = ''
+  arrObj.find(object => {
+    info += `${object.name} tiene ${object.age} y es de la generacion ${object.generation} \n`;
+    console.log(object.modulos[1]);//para acceder a una propiedad de un objeto con valor tipo arreglo
+  })
+  return info
+}
+
+console.log(printName(koders));
 /**
  * Del mismo array de koders
  * Obtener la suma de todas las edades
@@ -45,12 +56,22 @@ console.log(getInfoCoder(koders));
  */
 const getAgeSum = (objKoder) => { 
   let sumaEdades = 0;
-  koders.forEach((cv) => {
+  objKoder.forEach((cv) => {
     sumaEdades += cv.age;
   });
   return sumaEdades
 }
 console.log(`La suma de todas las edades es ${getAgeSum(koders)}`);
+
+//la otra opcion es hacerla con reduce, a la propiedades con valores de array le podemos hace metodos de string
+
+let totalAgeRed = koders.reduce((acc, cv) => {//Si yo no especifico el inicializador de CV, toma como primer valor el primer valor de CV
+ return acc + cv.age
+}, 0)
+
+console.log(totalAgeRed);
+
+
 /**`
  * Del objeto library
  * 1. Obtener el numero de libros que se estan leyendo
@@ -80,11 +101,10 @@ const getLibraryInfo = (objLibrary) => {
   let listaAutores = [];
   let listaLibros = [];
   objLibrary.forEach((cv) => {
-    if (cv.readingStatus === true) {
-      librosLeidos += cv.readingStatus;
-    }
-    listaAutores.push(cv.author);
-    listaLibros.push(cv.title);
+   cv.readingStatus ?  librosLeidos += cv.readingStatus :librosLeidos 
+    
+    listaAutores.push(cv.author)
+    listaLibros.push(cv.title)
   });
   console.log(listaAutores);
   console.log(listaLibros);
@@ -92,7 +112,20 @@ const getLibraryInfo = (objLibrary) => {
   Lista de todos los Libros  ${listaLibros}`;
  }
 console.log(getLibraryInfo(library));
-Collapse
+
+//solucion con map
+
+let authors = library.map((cv) => {
+  return cv.author
+})
+
+let book = library.map((cv) => {
+  return cv.title
+})
+
+console.log(authors);
+console.log(book);
+
 
 
 
