@@ -69,16 +69,14 @@ body.appendChild(kodersUl);
 
 let koderOptions = document.querySelectorAll(".item-koder");
 
-const addTextToLi = (array) => {  
-  array.forEach(element => {
-    let liKoder = kodersUl.appendChild(document.createElement("li")); 
-    liKoder.textContent = `${element.name} ${element.lastName}`;      
- });
-}
+const addTextToLi = (array) => {
+  array.forEach((element) => {
+    let liKoder = kodersUl.appendChild(document.createElement("li"));
+    liKoder.textContent = `${element.name} ${element.lastName}`;
+  });
+};
 
 addTextToLi(koders);
-
-
 
 /**
  * Opcional
@@ -93,3 +91,23 @@ addTextToLi(koders);
  * Referencia: https://slack-files.com/TCRFJBKB6-F03J4CBCBA7-8b1c39e7bc
  *
  */
+
+let contentBody = document.querySelector("tbody");
+koders.forEach((koder, index, array) => {
+  let tr = document.createElement("tr");
+  let tdName = document.createElement("td");
+  let tdAge = document.createElement("td");
+  let tdGen = document.createElement("td");
+
+  tdName.textContent = koder.name;
+  tdAge.textContent = koder.age;
+  tdGen.textContent = koder.generation;
+
+  tr.appendChild(tdName);
+  tr.appendChild(tdAge);
+  tr.appendChild(tdGen);
+
+  console.log(tr);
+
+  contentBody.appendChild(tr);
+});
