@@ -1,40 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
-    <link rel="stylesheet" href="./css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <h1 class="title" id="title">DOM events</h1>
 
-    <h1     
-    class="title"
-    id="title">DOM homework</h1>    
+    <button onclick="enviar()">Enviar</button>
+    <button onclick="calcular()">Calcular</button>
 
-
-    <table>
-        <thead>
-            <th>Nombre</th>
-            <th>Edad</th>
-            <th>Generacion</th>         
-        </thead>
-
-        <tbody>
-            
-        </tbody>
-    </table>
-
-    <ul>
-        <li>Jorge</li>
-        <li>Erick</li>
-        <li>Sara</li>
-
-    </ul>
-
+    <input type="text" onkeydown="empezando()"  onkeypress="presionando()" onkeyup="terminando()" onfocus="focoEnInput()" />
     
-    <script src="./js/homework.js"></script>   
-</body>
+    <br><br>
+    <input type="text" value="Hola mundo!" onselect="seleccionado()">
+    <br><br>
+    <input type="text"  oncontextmenu="clickDerecho()">
+
+    <script src="./js/domEvents.js"></script>
+  </body>
 </html>
