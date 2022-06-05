@@ -8,29 +8,31 @@
     Replicar con JS este markup
  */
 
-let menuList = document.createElement("ul");
-let body = document.querySelector("body");
+const ejercicio1 = () => {
+  let menuList = document.createElement("ul");
+  let body = document.querySelector("body");
 
-let homeLi = document.createElement("li");
-homeLi.textContent = "Home";
-let productLi = document.createElement("li");
-productLi.textContent = "Products";
-let aboutLi = document.createElement("li");
-aboutLi.textContent = "About Us";
+  let homeLi = document.createElement("li");
+  homeLi.textContent = "Home";
+  let productLi = document.createElement("li");
+  productLi.textContent = "Products";
+  let aboutLi = document.createElement("li");
+  aboutLi.textContent = "About Us";
 
-menuList.appendChild(homeLi);
-menuList.appendChild(productLi);
-menuList.appendChild(aboutLi);
-body.appendChild(menuList);
+  menuList.appendChild(homeLi);
+  menuList.appendChild(productLi);
+  menuList.appendChild(aboutLi);
+  body.appendChild(menuList);
 
-let menu = document.querySelector("ul");
-menu.setAttribute("class", "menu");
-menu.setAttribute("id", "menu");
-let menuOptions = document.querySelectorAll("li");
+  let menu = document.querySelector("ul");
+  menu.setAttribute("class", "menu");
+  menu.setAttribute("id", "menu");
+  let menuOptions = document.querySelectorAll("li");
 
-menuOptions.forEach((cv) => {
-  cv.setAttribute("class", "item__menu");
-});
+  menuOptions.forEach((cv) => {
+    cv.setAttribute("class", "item__menu");
+  });
+};
 
 /**
  * Dado un arreglo de koders
@@ -63,20 +65,25 @@ let koders = [
   },
 ];
 
-let kodersUl = document.createElement("ul");
-kodersUl.setAttribute("class", "koders");
-body.appendChild(kodersUl);
+//let koderOptions = document.querySelectorAll(".item-koder");
 
-let koderOptions = document.querySelectorAll(".item-koder");
+
+const ejercicio2 = () => {
+  addTextToLi(koders);
+
+}
 
 const addTextToLi = (array) => {
+  let kodersUl = document.createElement("ul");
+  kodersUl.setAttribute("class", "koders");
+  let body = document.querySelector("body");
+  body.appendChild(kodersUl);
+
   array.forEach((element) => {
     let liKoder = kodersUl.appendChild(document.createElement("li"));
     liKoder.textContent = `${element.name} ${element.lastName}`;
   });
 };
-
-addTextToLi(koders);
 
 /**
  * Opcional
@@ -111,3 +118,31 @@ koders.forEach((koder, index, array) => {
 
   contentBody.appendChild(tr);
 });
+
+
+
+const tarea1jorge = () =>{
+const body = document.querySelector('body')
+const lista = document.createElement('ul')
+lista.setAttribute('id', 'lista')
+//settear clases
+//mediante atributos
+lista.setAttribute('class', 'lista lista2')
+//mediante metodos add/remove
+lista.classList.add('lista')
+lista.classList.add('lista2')
+lista.classList.add('lista3')//añade estas clases
+lista.classList.remove('lista2')
+
+
+let menus = ['Home', 'Products', 'About us']
+
+menus.forEach(menu => {
+  let li = document.createElement('li')
+  li.textContent = menu
+  
+});
+
+}
+
+document.querySelector('body').appendChild(lista)
