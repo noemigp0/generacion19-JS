@@ -31,3 +31,14 @@ th {
 td, th {
     border: 1px solid #444
 }
+
+.item-koder ,.lista{
+    width: 300px;
+}
+
+
+.ejerciciouno, .ejercicidos {
+    align-items: center;
+}
+
+
