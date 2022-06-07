@@ -246,3 +246,17 @@ let template = albumes.reduce(( acc, cv) => {
   </div>`
 
 }, '')
+
+
+
+//Notas: 
+/*
+Añadir mi clase main
+recordar siempre poner ids
+recordar que cuando ocupamos un acumuladir += podemos ocupar un reduce
+
+
+
+
+
+*/
