@@ -231,3 +231,18 @@ const addCardsContent = (array) => {
   console.log(tableKoders);
   document.querySelector(".row").innerHTML = tableKoders;
 };
+
+//solucuon con reduce
+let template = albumes.reduce(( acc, cv) => {
+  return acc += `   
+  <div class="col">
+    <div class="card" style="width: 15rem;">
+     <img src="${cv.url}" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">${cv.title}</h5>
+        <p class="card-text">Id: ${cv.id}</p>          
+      </div>
+    </div>
+  </div>`
+
+}, '')
