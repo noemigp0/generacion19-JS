@@ -22,15 +22,16 @@ let users = [];
 
 const printUsers = (arrObjs) => {
   let template = arrObjs.reduce((acc, post) => {
-    return (acc += `         
+    return (acc += `     
+  <div class="col">
     <div class="card">
-          <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">${post.id} : ${post.title}</h5>
-          <p class="card-text">${post.body}</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">${post.id} : ${post.title}</h5>
+        <p class="card-text">${post.body}</p>
+      </div>
     </div>
+  </div>
           `);
   }, "");
 
