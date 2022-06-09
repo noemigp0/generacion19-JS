@@ -25,7 +25,7 @@ const printUsers = (arrObjs) => {
     return (acc += `     
   <div class="col">
     <div class="card">
-      <img src="..." class="card-img-top" alt="...">
+    <img alt="imagen aleatoria" src="https://via.placeholder.com/300x150">
       <div class="card-body">
         <h5 class="card-title">${post.id} : ${post.title}</h5>
         <p class="card-text">${post.body}</p>
@@ -35,7 +35,7 @@ const printUsers = (arrObjs) => {
           `);
   }, "");
 
-  document.querySelector(".card-group").innerHTML = template;
+  document.querySelector("#card-group").innerHTML = template;
 };
 
 //Define callback function, que hacer cuando la respuesta este lista
