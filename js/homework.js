@@ -398,3 +398,7 @@ inputSearch.addEventListener("keyup", () => {
   }, "");
   document.querySelector("#lista__users").innerHTML = template;
 });
+
+
+
+//usar esta tarea y probar con diferentes eventos
