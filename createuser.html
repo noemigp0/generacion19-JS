@@ -17,22 +17,22 @@
     <main class="main">
       <h1 class="text-center">AJAX POST</h1>
 
-   
-    <div class="container">  
+      <form class="container">
+ 
       <div class="mb-3 row">
         <label for="staticEmail" class="col-2 col-form-label">Titulo</label>
         <div class="col-sm-3">
-          <input type="text"  class="form-control" id="titulo">
+          <input type="text"  class="form-control" id="titulo" required>
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="inputPassword" class="col-2 col-form-label">Contenido</label>
+        <label for="inputPassword" class="col-2 col-form-label" required>Contenido</label>
         <div class="col-sm-3">
           <input type="text" class="form-control" id="contenido">
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="inputPassword" class="col-2 col-form-label">Fecha</label>
+        <label for="inputPassword" class="col-2 col-form-label" required>Fecha</label>
         <div class="col-sm-3">
           <input type="date" class="form-control" id="fecha">
         </div>
@@ -40,13 +40,14 @@
     
         <div class="row">
             <div class="col align-self-end">
-        <button type="submit" id="guardar" class="btn btn-primary  mb-3">Guardar</button>
+        <button type="button" id="guardar" class="btn btn-primary  mb-3">Guardar</button>
 
         <div id="liveAlertPlaceholder"></div>
  
     </div>
-      </div>
-      </div>
+     
+     
+</form>
    
 
 

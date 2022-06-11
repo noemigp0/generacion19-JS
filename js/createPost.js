@@ -5,7 +5,7 @@ const postRequest = new XMLHttpRequest();
 
 let postsArray = [];
 //Define callback function, que hacer cuando la respuesta este lista
-postRequest.onload = (data) => { 
+postRequest.onload = (data) => { //el onload sirve para indicar que todo esta listo
     //console.log(data);
   if (data.target.status >= 200 && data.target.status <= 299) {
    
@@ -95,9 +95,9 @@ document.querySelector('#card_container').innerHTML = postsAccumulator
 //guardando un elemento
 
 let btnSave = document.querySelector('#guardar')
-let titulo = document.querySelector('#titulo')
-let contenido = document.querySelector('#contenido')
-let fecha = document.querySelector('#fecha')
+let titulo = document.querySelector('#titulo').value.trim()
+let contenido = document.querySelector('#contenido').value.trim()
+let fecha = document.querySelector('#fecha').value.trim()
 
 
 
@@ -106,14 +106,22 @@ btnSave.addEventListener('click', function() {
     console.log("contenido", contenido.value);
     console.log("fecha", fecha.value);
 
+if (titulo !== '' && contenido !== '' && fecha !== ''){
+    
     let newPost = {
-        body: `${contenido.value}`,
-        title: `${titulo.value}`,
-        date: `${fecha.value}`
+        body: contenido,
+        title: titulo,
+        date: fecha
     }
-
     createPost(newPost)
     alert('Post registrado, favor de actualizar', 'success')
+} else {
+    alert('Debe llenar todos los campos', 'danger')
+    
+}
+
+    
+   
 
 } )
 
@@ -131,4 +139,28 @@ const alert = (message, type) => {
     ].join('')
   
     alertPlaceholder.append(wrapper)
+  }
+
+
+
+  ////Metodo para cualquier tipo de funsion de jorge
+
+  const ajaxXHR = (callback, url, method = 'GET', obj = {} ) => {
+    const xhttp = new XMLHttpRequest()
+    xhttp.open( 
+        method,  
+        `https://koders19gjs-default-rtdb.firebaseio.com${url}`, 
+        true
+    )
+    xhttp.onload = function(data) {
+        if(data.target.status >= 200 && data.target.status <= 399){
+            let response = JSON.parse(data.target.response)
+            callback(response)
+        }
+    }
+    if(method === 'GET' || method === 'DELETE'){
+        xhttp.send()
+    } else {
+        xhttp.send( JSON.stringify(obj) )
+    }
   }
