@@ -68,12 +68,16 @@ const gettingIdKoderRegistered = (response) => {
   if (response.name.length > 0) {
     //validando que el hash del id contenga informacion
     console.log(response.name);
-    alert(`Koder ${response.name} registrado con exito`, "success");//llamando a la funsion de alert, si todo sale bien se mostrara
-    
+    alert(`Koder ${response.name} registrado con exito`, "success"); //llamando a la funsion de alert, si todo sale bien se mostrara
+
+    //las siguientes lineas son para limpiar los campos
+    document.querySelector("#name").value = "";
+    document.querySelector("#age").value = "";
+    document.querySelector("#bootcamp").value = "";
+    document.querySelector("#biography").value = "";
   } else {
     alert(`Algo salio mal`, "danger");
-   }
-
+  }
 };
 
 //3.- Añadir evento al boton
