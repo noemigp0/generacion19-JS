@@ -1,96 +1,88 @@
-let koders = [
-  {      
-    "name": "Leanne Graham",
-    "age": 30,
-    "bootcamp": "js",
-    "biography": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, reprehenderit libero. Numquam, ratione vel minus dignissimos qui consequatur sint reiciendis provident ipsum eveniet! Accusantium, totam? Voluptas mollitia culpa illum assumenda!"
-  },
-  {      
-    "name": "Ervin Howell",
-    "age": 29,
-    "bootcamp": "js",
-    "biography": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, reprehenderit libero. Numquam, ratione vel minus dignissimos qui consequatur sint reiciendis provident ipsum eveniet! Accusantium, totam? Voluptas mollitia culpa illum assumenda!"
-  },
-  {      
-    "name": "Clementine Bauch",
-    "age": 29,
-    "bootcamp": "js",
-    "biography": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, reprehenderit libero. Numquam, ratione vel minus dignissimos qui consequatur sint reiciendis provident ipsum eveniet! Accusantium, totam? Voluptas mollitia culpa illum assumenda!"
-  },
-  {     
-    "name": "Patricia Lebsack",
-    "age": 28,
-    "bootcamp": "js",
-    "biography": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, reprehenderit libero. Numquam, ratione vel minus dignissimos qui consequatur sint reiciendis provident ipsum eveniet! Accusantium, totam? Voluptas mollitia culpa illum assumenda!"
-  },
-  {     
-    "name": "Chelsey Dietrich",
-    "age": 27,
-    "bootcamp": "js",
-    "biography": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, reprehenderit libero. Numquam, ratione vel minus dignissimos qui consequatur sint reiciendis provident ipsum eveniet! Accusantium, totam? Voluptas mollitia culpa illum assumenda!"
-  },
-  {      
-    "name": "Mrs. Dennis Schulist",
-    "age": 26,
-    "bootcamp": "js",
-    "biography": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, reprehenderit libero. Numquam, ratione vel minus dignissimos qui consequatur sint reiciendis provident ipsum eveniet! Accusantium, totam? Voluptas mollitia culpa illum assumenda!"
-  },
-  {      
-    "name": "Kurtis Weissnat",
-    "age": 25,
-    "bootcamp": "js",
-    "biography": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, reprehenderit libero. Numquam, ratione vel minus dignissimos qui consequatur sint reiciendis provident ipsum eveniet! Accusantium, totam? Voluptas mollitia culpa illum assumenda!"
-  },
-  {     
-    "name": "Nicholas Runolfsdottir V",
-    "age": 24,
-    "bootcamp": "js",
-    "biography": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, reprehenderit libero. Numquam, ratione vel minus dignissimos qui consequatur sint reiciendis provident ipsum eveniet! Accusantium, totam? Voluptas mollitia culpa illum assumenda!"
-  },
-  {      
-    "name": "Glenna Reichert",
-    "age": 23,
-    "bootcamp": "js",
-    "biography": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, reprehenderit libero. Numquam, ratione vel minus dignissimos qui consequatur sint reiciendis provident ipsum eveniet! Accusantium, totam? Voluptas mollitia culpa illum assumenda!"
-  },
-  {     
-    "name": "Clementina DuBuque",
-    "username": "Moriah.Stanton",
-    "age": 30,
-    "bootcamp": "js",
-    "biography": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, reprehenderit libero. Numquam, ratione vel minus dignissimos qui consequatur sint reiciendis provident ipsum eveniet! Accusantium, totam? Voluptas mollitia culpa illum assumenda!"
-  }
-]
-
-
-const ajaxXHR = (callback, url, method = 'GET', obj = {} ) => {
-    const xhttp = new XMLHttpRequest()
-    xhttp.open( method, `https://koders19gjs-default-rtdb.firebaseio.com${url}`, true)
-    xhttp.onload = function(data) {
-        if(data.target.status >= 200 && data.target.status <= 399){
-            let response = JSON.parse(data.target.response)
-            callback(response)
-        }
+//1. Cambiar url de firebase por mi url
+const ajaxXHR = (callback, url, method = "GET", obj = {}) => {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open(
+    method,
+    `https://koder19g-ngp-default-rtdb.firebaseio.com${url}`,
+    true
+  );
+  xhttp.onload = function (data) {
+    if (data.target.status >= 200 && data.target.status <= 399) {
+      let response = JSON.parse(data.target.response);
+      callback(response);
     }
-    if(method === 'GET' || method === 'DELETE'){
-        xhttp.send()
-    } else {
-      xhttp.send( JSON.stringify(obj) )
-    }
+  };
+  if (method === "GET" || method === "DELETE") {
+    xhttp.send();
+  } else {
+    xhttp.send(JSON.stringify(obj));
   }
+};
 
-
-   
 // Create Koder
-console.log('SU codigo para crear un koder aquí')
+console.log("SU codigo para crear un koder aquí");
 
+//2.- Declarar funsion solo para Obtener valores de los inputs y crear estrcutura que se mandara a la B.D
 
-const insertAllKodersInfo = ( kodersArray ) => {
-  kodersArray.forEach(koder => {    
-    ajaxXHR(`/koders/.json`, 'POST', koder)
+const getKoderInfo = () => {
+  //declarando funsion
+  let name = document.querySelector("#name").value;
+  let age = document.querySelector("#age").value;
+  let bootcamp = document.querySelector("#bootcamp").value;
+  let biography = document.querySelector("#biography").value;
+
+  // console.log("valor ingresado en campo nombre", name); //probando los valores ingresados
+  // console.log("valor ingresado en campo edad", age); //probando los valores ingresados
+  // console.log("valor ingresado en campo bootcamp", bootcamp); //probando los valores ingresados
+  // console.log("valor ingresado en campo biography", biography); //probando los valores ingresados
+
+  // retornando Estructura de cada koder con los valores ingresados en los inputs
+
+  let koderStrcuture = {
+    name: name,
+    age: parseInt(age),
+    bootcamp: bootcamp,
+    biography: biography,
+  };
+  return koderStrcuture;
+};
+
+//Esta funsion es para los alerts, el cdigo es de bootstrap
+const alertPlaceholder = document.getElementById("liveAlertPlaceholder");
+const alert = (message, type) => {
+  const wrapper = document.createElement("div");
+  wrapper.innerHTML = [
+    `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+    `   <div>${message}</div>`,
+    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+    "</div>",
+  ].join("");
+
+  alertPlaceholder.append(wrapper);
+};
+
+//4.- Esta funsion es la que recibe la respuesta del nuevo koder registrado
+const gettingIdKoderRegistered = (response) => {
+  //console.log(response); //probando response
+
+  if (response.name.length > 0) {
+    //validando que el hash del id contenga informacion
+    console.log(response.name);
+    alert(`Koder ${response.name} registrado con exito`, "success");//llamando a la funsion de alert, si todo sale bien se mostrara
     
-  }); 
+  } else {
+    alert(`Algo salio mal`, "danger");
+   }
 
-}
+};
 
-//insertAllKodersInfo(koders)
+//3.- Añadir evento al boton
+let registryButton = document.querySelector("#add");
+//Al boton registryButton le añado el evento click y defno la funsion que ejecutara --> "() =>"
+registryButton.addEventListener("click", () => {
+  let objKoder = getKoderInfo(); //almaceno koderStructure con valores que es lo que me esta retornando getKoderInfo()
+
+  //llamando a la funsion de jorge para hacer el registro del koder
+  ajaxXHR(gettingIdKoderRegistered, `/koders.json`, "POST", objKoder);
+  //en la linea de arriba la funsion gettingIdKoderRegistered, es la que va a recibir el id que nos responde firebase cuando un nuevo registro se ha generado
+});
