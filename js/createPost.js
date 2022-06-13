@@ -74,15 +74,18 @@ postRequest.open("GET", "https://koder19g-ngp-default-rtdb.firebaseio.com/posts/
 postRequest.send();
 console.log(postsFBArray)
 
-
+let idPost = window.location.search.substring(8)
 let postsAccumulator = ``
 for( post in postsFBArray) {   
     postsAccumulator += `    
     <div class="col">
-    <div class="card border-info" >
+    <div class="card border-info" id="${post}" >
     <div class="card-header">${postsFBArray[post].title}</div>      
-      <div class="card-body">      
-      <p class="card-text">${postsFBArray[post].body}</p>   
+      <div class="card-body" id="data">      
+      <p class="card-text">${postsFBArray[post].body}</p> 
+      <a href="updatePost.html?idPost=${post}" class="link-primary">Editar</a>
+      <a href="mostrarpost.html?idPost=${post}" class="link-dark">Ver post</a>
+      <button  id="borrar" data-src=${post} class="btn btn-danger">Borrar</button>     
       </div>
     </div>
   </div>
@@ -143,24 +146,9 @@ const alert = (message, type) => {
 
 
 
+
+
+
   ////Metodo para cualquier tipo de funsion de jorge
 
-  const ajaxXHR = (callback, url, method = 'GET', obj = {} ) => {
-    const xhttp = new XMLHttpRequest()
-    xhttp.open( 
-        method,  
-        `https://koders19gjs-default-rtdb.firebaseio.com${url}`, 
-        true
-    )
-    xhttp.onload = function(data) {
-        if(data.target.status >= 200 && data.target.status <= 399){
-            let response = JSON.parse(data.target.response)
-            callback(response)
-        }
-    }
-    if(method === 'GET' || method === 'DELETE'){
-        xhttp.send()
-    } else {
-        xhttp.send( JSON.stringify(obj) )
-    }
-  }
+ 
