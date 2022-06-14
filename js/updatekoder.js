@@ -17,3 +17,12 @@ const ajaxXHR = (callback, url, method = 'GET', obj = {} ) => {
 
 // Update Koder
 console.log('SU codigo para editar un koder aquí')
+
+
+const getKoderInfo = ( response ) => {
+  console.log(response)
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  ajaxXHR(getKoderInfo, `/koders/.json`, "GET");
+})

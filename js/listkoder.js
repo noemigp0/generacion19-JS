@@ -43,14 +43,17 @@ const ajaxXHR = (callback, url, method = "GET") => {
 
 // Listar todos los koders
 console.log("SU codigo para editar un koder aquí");
-
+let deleteButton =""
+let deleteButtonValue=""
 const listKoders = (objKoders) => {
   let template = "";
   for (koder in objKoders) {
+    let koderId = koder
     let koderInfo = objKoders[koder];
     template += `
+    <br>
     <div class="col-sm-6">
-        <div class="card">
+        <div class="card mb-4">
             <div class="card-body">
                 <h5 class="card-title">${koderInfo.name}</h5>
                   <div class="row mb-4">
@@ -66,15 +69,56 @@ const listKoders = (objKoders) => {
             </div>
           </div> 
                 <p class="card-text">${koderInfo.biography}</p>                
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <button type="button" id="update-btn" class="btn btn-secondary">Modificar</button>
+               
             </div>
         </div>
     </div>`;
   }
 
   document.querySelector(".all__posts").innerHTML = template;
+  
+  // deleteButton = document.querySelector("#delete-btn")
+  // deleteButtonValue = document.querySelector("#delete-btn").value
+  // deleteButton.addEventListener("click", () => {
+  //   console.log(deleteButtonValue);
+  
+  // })
+  
+  
+
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  let objKoders = ajaxXHR(listKoders, `/koders/.json`, "GET");
+  ajaxXHR(listKoders, `/koders/.json`, "GET");
 });
+
+
+const confirmKoderDeleted = (response) => {
+  console.log(response)
+  if (response === null){
+    alert("Registro eliminado, favor de actualizar", "warning")
+  }
+}
+
+
+//Esta funsion es para los alerts, el cdigo es de bootstrap
+const alertPlaceholder = document.getElementById("liveAlertPlaceholder");
+const alert = (message, type) => {
+  const wrapper = document.createElement("div");
+  wrapper.innerHTML = [
+    `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+    `   <div>${message}</div>`,
+    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+    "</div>",
+  ].join("");
+
+  alertPlaceholder.append(wrapper);
+};
+
+
+const deleteKoder = (idKoder) => {
+  //deleteButtonValue = document.querySelector("#delete-btn").value
+  console.log(idKoder);
+  //ajaxXHR(confirmKoderDeleted, `/koders/${idKoder}.json`, 'DELETE')
+}
