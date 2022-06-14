@@ -24,25 +24,21 @@ console.log("SU codigo para crear un koder aquí");
 
 //2.- Declarar funsion solo para Obtener valores de los inputs y crear estrcutura que se mandara a la B.D
 
+let name = document.querySelector("#name");
+let age = document.querySelector("#age");
+let bootcamp = document.querySelector("#bootcamp");
+let biography = document.querySelector("#biography");
+
 const getKoderInfo = () => {
   //declarando funsion
-  let name = document.querySelector("#name").value;
-  let age = document.querySelector("#age").value;
-  let bootcamp = document.querySelector("#bootcamp").value;
-  let biography = document.querySelector("#biography").value;
-
-  // console.log("valor ingresado en campo nombre", name); //probando los valores ingresados
-  // console.log("valor ingresado en campo edad", age); //probando los valores ingresados
-  // console.log("valor ingresado en campo bootcamp", bootcamp); //probando los valores ingresados
-  // console.log("valor ingresado en campo biography", biography); //probando los valores ingresados
 
   // retornando Estructura de cada koder con los valores ingresados en los inputs
 
   let koderStrcuture = {
-    name: name,
-    age: parseInt(age),
-    bootcamp: bootcamp,
-    biography: biography,
+    name: name.value,
+    age: parseInt(age.value),
+    bootcamp: bootcamp.value,
+    biography: biography.value,
   };
   return koderStrcuture;
 };
@@ -65,16 +61,17 @@ const alert = (message, type) => {
 const gettingIdKoderRegistered = (response) => {
   //console.log(response); //probando response
 
+
   if (response.name.length > 0) {
     //validando que el hash del id contenga informacion
     console.log(response.name);
     alert(`Koder ${response.name} registrado con exito`, "success"); //llamando a la funsion de alert, si todo sale bien se mostrara
 
     //las siguientes lineas son para limpiar los campos
-    document.querySelector("#name").value = "";
-    document.querySelector("#age").value = "";
-    document.querySelector("#bootcamp").value = "";
-    document.querySelector("#biography").value = "";
+    name.value = "";
+    age.value = "";
+    bootcamp.value = "";
+    biography.value = "";
   } else {
     alert(`Algo salio mal`, "danger");
   }
@@ -87,6 +84,11 @@ registryButton.addEventListener("click", () => {
   let objKoder = getKoderInfo(); //almaceno koderStructure con valores que es lo que me esta retornando getKoderInfo()
 
   //llamando a la funsion de jorge para hacer el registro del koder
-  ajaxXHR(gettingIdKoderRegistered, `/koders.json`, "POST", objKoder);
+
+  if (name.value === "" || age.value === "" || bootcamp.value === '' || biography.value === '') {
+    alert("Debe llenar todos los campos", 'warning')
+  } else {
+    ajaxXHR(gettingIdKoderRegistered, `/koders.json`, "POST", objKoder);
+  }
   //en la linea de arriba la funsion gettingIdKoderRegistered, es la que va a recibir el id que nos responde firebase cuando un nuevo registro se ha generado
 });
