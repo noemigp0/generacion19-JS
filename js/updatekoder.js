@@ -1,9 +1,13 @@
 const ajaxXHR = (callback, url, method = 'GET', obj = {} ) => {
     const xhttp = new XMLHttpRequest()
-    xhttp.open( method, `https://koders19gjs-default-rtdb.firebaseio.com${url}`, true)
+    xhttp.open(
+      method,
+      `https://koder19g-ngp-default-rtdb.firebaseio.com/${url}`,
+      true
+    );
     xhttp.onload = function(data) {
-        if(data.target.status >= 200 && data.target.status <= 399){
-            let response = JSON.parse(data.target.response)
+        if(data.target.status >= 200 && data.target.status <= 399){         
+          let response = JSON.parse(data.target.response)          
             callback(response)
         }
     }
@@ -19,10 +23,60 @@ const ajaxXHR = (callback, url, method = 'GET', obj = {} ) => {
 console.log('SU codigo para editar un koder aquí')
 
 
-const getKoderInfo = ( response ) => {
-  console.log(response)
+const alertPlaceholder = document.getElementById("liveAlertPlaceholder");
+const alert = (message, type) => {
+  const wrapper = document.createElement("div");
+  wrapper.innerHTML = [
+    `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+    `   <div>${message}</div>`,
+    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+    "</div>",
+  ].join("");
+
+  alertPlaceholder.append(wrapper);
+};
+
+let idKoder = window.location.search.substring(10);
+let name = document.getElementById("name");
+let age = document.getElementById("age");
+let bootcamp = document.getElementById("bootcamp");
+let biography = document.getElementById("biography");
+
+
+const setInfoKoder = ( response ) => { 
+  console.log(response);
+  name.value = response.name
+  age.value = response.age
+  bootcamp.value = response.bootcamp
+  biography.value = response.biography
+}
+
+const infoKoderUpdated = (response) => { 
+  console.log(response);
+  
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  ajaxXHR(getKoderInfo, `/koders/.json`, "GET");
+  //ajaxXHR = (callback, url, method = 'GET', obj = {} )
+  //ajaxXHR(nombreDeFuncionAllamar, `/koders/${idKoder}.json`, 'PATCH', obj)
+  //ajaxXHR(setInfoKoder, `/koders/${idKoder}.json`, 'PATCH');
+  ajaxXHR(setInfoKoder, `/koders/${idKoder}.json`, "GET");
+});
+
+let updateButton = document.getElementById("update");
+updateButton.addEventListener("click", () => { 
+  let koderUpdated = {
+    name: name.value,
+    age: age.value,
+    bootcamp: bootcamp.value,
+    biography: biography.value
+  };
+
+
+  if (name.value === "" || age.value === "" || bootcamp.value === '' || biography.value === '') {
+    alert("Debe llenar todos los campos", 'warning')
+  } else {
+    ajaxXHR(infoKoderUpdated, `/koders/${idKoder}.json`, "PATCH", koderUpdated);
+  }
+  
 })
