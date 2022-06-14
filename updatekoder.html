@@ -1,71 +1,64 @@
 <!DOCTYPE html>
 
 <html lang="en">
-    <head>
-        <!-- Set de caracteres  -->
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-        <link rel="stylesheet" href="/css/styles.css">
-        
-    </head>
-    <body>
 
-        <main class="main">
-            <h1 class="text-center mt-5 mb-4 ">Actualizar post</h1>
-            <div class="container">
-    
-                <form>
-                    <div id="liveAlertPlaceholder"></div>
-                    <div class="form-outline mb-4">
-                      <label class="form-label" for="form3Example3">Nombre</label>
-                      <input type="test" id="name" class="form-control" />
-                    </div>
-                    <div class="row mb-4">
-                      <div class="col">
+<head>
+    <!-- Set de caracteres  -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/styles.css" />
+</head>
+
+<body>
+    <main class="main">
+        <h1 class="text-center mt-5 mb-4">Editar koder</h1>
+        <div class="container">
+            <form>
+                <div id="liveAlertPlaceholder"></div>
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example3">Nombre</label>
+                    <input type="test" id="name" class="form-control" />
+                </div>
+                <div class="row mb-4">
+                    <div class="col">
                         <div class="form-outline">
-                          <label class="form-label" for="form3Example1">Edad</label>
-                          <input type="text" id="age" class="form-control" />
+                            <label class="form-label" for="form3Example1">Edad</label>
+                            <input type="text" id="age" class="form-control" />
                         </div>
-                      </div>
-                      <div class="col">
+                    </div>
+                    <div class="col">
                         <div class="form-outline">
-                          <label class="form-label" for="form3Example2">Bootcamp</label>
-                          <input type="text" id="bootcamp" class="form-control" />
+                            <label class="form-label" for="form3Example2">Bootcamp</label>
+                            <input type="text" id="bootcamp" class="form-control" />
                         </div>
-                      </div>
                     </div>
-          
-                    <div class="form-outline mb-4">
-                      <label class="form-label" for="form3Example4">Biografia</label>
-                      <textarea
-                        type="text"
-                        id="biography"
-                        class="form-control"
-                      ></textarea>
-                    </div>
-                    <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. In soluta, neque vel numquam fuga fugiat quis dolorum eveniet beatae? Architecto, numquam vitae magnam vel fuga magni sunt est nihil commodi. -->
-          
-                    <!--  button -->
-                    <button type="button" id="edit" class="btn btn-primary btn-block mb-4 button-width">
-                      Modificar
-                    </button>
-                  </form>
+                </div>
 
-                
-                
-            </div>
-        </main>
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example4">Biografia</label>
+                    <textarea type="text" id="biography" class="form-control"></textarea>
+                </div>
+                <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. In soluta, neque vel numquam fuga fugiat quis dolorum eveniet beatae? Architecto, numquam vitae magnam vel fuga magni sunt est nihil commodi. -->
 
-        <!-- Referencia  de ayuda -->
-        <!-- https://getbootstrap.com/docs/5.2/forms/form-control/#content -->
+                <!--  button -->
+                <button type="button" id="update" class="btn btn-warning btn-block mb-4 button-width">
+                    Actualizar
+                </button>
+            </form>
+        </div>
+    </main>
 
+    <!-- Referencia  de ayuda -->
+    <!-- https://getbootstrap.com/docs/5.2/forms/form-control/#content -->
 
-        
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-        <script src="/js/updatekoder.js"></script>
-        
-    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="/js/updatekoder.js"></script>
+</body>
+
 </html>
