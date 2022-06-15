@@ -48,7 +48,7 @@ let deleteButtonValue=""
 const listKoders = (objKoders) => {
   let template = "";
   for (koder in objKoders) {
-    let koderId = koder
+    
     let koderInfo = objKoders[koder];
     template += `
     <br>
@@ -69,7 +69,8 @@ const listKoders = (objKoders) => {
             </div>
           </div> 
                 <p class="card-text">${koderInfo.biography}</p>                
-                <button type="button" id="update-btn" class="btn btn-secondary">Modificar</button>
+                <a href="/interior.html?koderkey=${koder}" class="btn btn-link">Ver koder</a>
+                <a href="/updatekoder.html?koderkey=${koder}" class="btn btn-link">Editar koder</a>
                
             </div>
         </div>
