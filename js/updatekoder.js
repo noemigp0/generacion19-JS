@@ -52,7 +52,7 @@ const setInfoKoder = ( response ) => {
 }
 
 const infoKoderUpdated = (response) => { 
-  console.log(response);
+  alert("Registro actualizado", 'success')
   
 }
 
