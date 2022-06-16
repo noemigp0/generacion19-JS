@@ -18,6 +18,9 @@ fetch(`https://koder19g-ngp-default-rtdb.firebaseio.com/koders/${idKoder}.json`)
     }
   })
   .then((response) => {
+
+    if (!response){
+    } else {
     let { name, age, biography, bootcamp } = response;
 
     let template = `
@@ -33,4 +36,6 @@ fetch(`https://koder19g-ngp-default-rtdb.firebaseio.com/koders/${idKoder}.json`)
             </div>
         `;
     document.querySelector(".wrap__koder").innerHTML = template;
-  });
+  }
+});
+
