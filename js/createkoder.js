@@ -1,23 +1,4 @@
-//1. Cambiar url de firebase por mi url
-const ajaxXHR = (callback, url, method = "GET", obj = {}) => {
-  const xhttp = new XMLHttpRequest();
-  xhttp.open(
-    method,
-    `https://koder19g-ngp-default-rtdb.firebaseio.com${url}`,
-    true
-  );
-  xhttp.onload = function (data) {
-    if (data.target.status >= 200 && data.target.status <= 399) {
-      let response = JSON.parse(data.target.response);
-      callback(response);
-    }
-  };
-  if (method === "GET" || method === "DELETE") {
-    xhttp.send();
-  } else {
-    xhttp.send(JSON.stringify(obj));
-  }
-};
+
 
 // Create Koder
 console.log("SU codigo para crear un koder aquí");
@@ -88,7 +69,27 @@ registryButton.addEventListener("click", () => {
   if (name.value === "" || age.value === "" || bootcamp.value === '' || biography.value === '') {
     alert("Debe llenar todos los campos", 'warning')
   } else {
-    ajaxXHR(gettingIdKoderRegistered, `/koders.json`, "POST", objKoder);
+    //ajaxXHR(gettingIdKoderRegistered, `/koders.json`, "POST", objKoder);
+    fetch ('https://koder19g-ngp-default-rtdb.firebaseio.com/koders/.json', {
+    method: 'POST',
+    body: JSON.stringify(objKoder),
+    headers: {
+        "Content-type": "application/json; charset=UTF-8"
+    }
+}).then(response => {
+    return response.json()
+}).then(finalResponse => {
+    if( !finalResponse) {
+     
+    }else {
+      gettingIdKoderRegistered(finalResponse)
+    }
+}).catch( err => {
+    console.log(err)
+})
   }
   //en la linea de arriba la funsion gettingIdKoderRegistered, es la que va a recibir el id que nos responde firebase cuando un nuevo registro se ha generado
 });
+
+
+// 

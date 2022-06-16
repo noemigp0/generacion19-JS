@@ -1,22 +1,22 @@
-const ajaxXHR = (callback, url, method = 'GET', obj = {} ) => {
-    const xhttp = new XMLHttpRequest()
-    xhttp.open(
-      method,
-      `https://koder19g-ngp-default-rtdb.firebaseio.com/${url}`,
-      true
-    );
-    xhttp.onload = function(data) {
-        if(data.target.status >= 200 && data.target.status <= 399){         
-          let response = JSON.parse(data.target.response)          
-            callback(response)
-        }
-    }
-    if(method === 'GET' || method === 'DELETE'){
-        xhttp.send()
-    } else {
-      xhttp.send( JSON.stringify(obj) )
-    }
-  }
+// const ajaxXHR = (callback, url, method = 'GET', obj = {} ) => {
+//     const xhttp = new XMLHttpRequest()
+//     xhttp.open(
+//       method,
+//       `https://koder19g-ngp-default-rtdb.firebaseio.com/${url}`,
+//       true
+//     );
+//     xhttp.onload = function(data) {
+//         if(data.target.status >= 200 && data.target.status <= 399){         
+//           let response = JSON.parse(data.target.response)          
+//             callback(response)
+//         }
+//     }
+//     if(method === 'GET' || method === 'DELETE'){
+//         xhttp.send()
+//     } else {
+//       xhttp.send( JSON.stringify(obj) )
+//     }
+//   }
   
 
 // Update Koder
@@ -60,7 +60,21 @@ document.addEventListener('DOMContentLoaded', () => {
   //ajaxXHR = (callback, url, method = 'GET', obj = {} )
   //ajaxXHR(nombreDeFuncionAllamar, `/koders/${idKoder}.json`, 'PATCH', obj)
   //ajaxXHR(setInfoKoder, `/koders/${idKoder}.json`, 'PATCH');
-  ajaxXHR(setInfoKoder, `/koders/${idKoder}.json`, "GET");
+  //ajaxXHR(setInfoKoder, `/koders/${idKoder}.json`, "GET");
+
+  fetch(`https://koder19g-ngp-default-rtdb.firebaseio.com/koders/${idKoder}.json`)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(
+        `Algo salio mal, status: ${response.status} ${response.statusText} type: ${response.type}` // si si, lanzamos un error con un mensaje
+      );
+    } else {
+      return response.json(); // sino, retornamos la respuesta al siguiente then
+    }
+  })
+  .then((response) => {
+    setInfoKoder(response);
+  });
 });
 
 let updateButton = document.getElementById("update");
@@ -76,7 +90,28 @@ updateButton.addEventListener("click", () => {
   if (name.value === "" || age.value === "" || bootcamp.value === '' || biography.value === '') {
     alert("Debe llenar todos los campos", 'warning')
   } else {
-    ajaxXHR(infoKoderUpdated, `/koders/${idKoder}.json`, "PATCH", koderUpdated);
+    //ajaxXHR(infoKoderUpdated, `/koders/${idKoder}.json`, "PATCH", koderUpdated);
+
+
+
+    fetch ( `https://koder19g-ngp-default-rtdb.firebaseio.com//koders/${idKoder}.json`, {
+    method: 'PATCH',
+    body: JSON.stringify(koderUpdated),
+    headers: {
+        "Content-type": "application/json; charset=UTF-8"
+    }
+}).then(response => {
+    return response.json()
+}).then(finalResponse => {
+    if( !finalResponse) {
+     
+    }else {
+      infoKoderUpdated(finalResponse)
+    }
+}).catch( err => {
+    console.log(err)
+})
+  }
   }
   
-})
+)
