@@ -8,18 +8,16 @@
 let idKoder = window.location.search.substring(10);
 console.log(idKoder);
 
-// Hacer una peticion al server
-
-// crear conexion
-const xhttp = new XMLHttpRequest();
-xhttp.open(
-  "GET",
-  `https://koder19g-ngp-default-rtdb.firebaseio.com/koders/${idKoder}.json`,
-  true
-);
-xhttp.onload = function (data) {
-  if (data.target.status >= 200 && data.target.status <= 399) {
-    let response = JSON.parse(data.target.response);
+fetch(`https://koder19g-ngp-default-rtdb.firebaseio.com/koders/${idKoder}.json`)
+  .then((response) => {
+    console.log(response);
+    if (response.status === 200) {
+      return response.json();
+    } else {
+      `Algo salio mal, status: ${response.status} ${response.statusText} type: ${response.type}`;
+    }
+  })
+  .then((response) => {
     let { name, age, biography, bootcamp } = response;
 
     let template = `
@@ -35,9 +33,4 @@ xhttp.onload = function (data) {
             </div>
         `;
     document.querySelector(".wrap__koder").innerHTML = template;
-  }
-};
-xhttp.send();
-
-// cuando el response este listo
-// pintar la informacion del koder en un card
+  });
