@@ -1,25 +1,4 @@
-// const ajaxXHR = (callback, url, method = 'GET', obj = {} ) => {
-//     const xhttp = new XMLHttpRequest()
-//     xhttp.open(
-//       method,
-//       `https://koder19g-ngp-default-rtdb.firebaseio.com/${url}`,
-//       true
-//     );
-//     xhttp.onload = function(data) {
-//         if(data.target.status >= 200 && data.target.status <= 399){         
-//           let response = JSON.parse(data.target.response)          
-//             callback(response)
-//         }
-//     }
-//     if(method === 'GET' || method === 'DELETE'){
-//         xhttp.send()
-//     } else {
-//       xhttp.send( JSON.stringify(obj) )
-//     }
-//   }
-  
 
-// Update Koder
 console.log('SU codigo para editar un koder aquí')
 
 
@@ -57,10 +36,6 @@ const infoKoderUpdated = (response) => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  //ajaxXHR = (callback, url, method = 'GET', obj = {} )
-  //ajaxXHR(nombreDeFuncionAllamar, `/koders/${idKoder}.json`, 'PATCH', obj)
-  //ajaxXHR(setInfoKoder, `/koders/${idKoder}.json`, 'PATCH');
-  //ajaxXHR(setInfoKoder, `/koders/${idKoder}.json`, "GET");
 
   fetch(`https://koder19g-ngp-default-rtdb.firebaseio.com/koders/${idKoder}.json`)
   .then((response) => {
@@ -90,9 +65,6 @@ updateButton.addEventListener("click", () => {
   if (name.value === "" || age.value === "" || bootcamp.value === '' || biography.value === '') {
     alert("Debe llenar todos los campos", 'warning')
   } else {
-    //ajaxXHR(infoKoderUpdated, `/koders/${idKoder}.json`, "PATCH", koderUpdated);
-
-
 
     fetch ( `https://koder19g-ngp-default-rtdb.firebaseio.com//koders/${idKoder}.json`, {
     method: 'PATCH',
